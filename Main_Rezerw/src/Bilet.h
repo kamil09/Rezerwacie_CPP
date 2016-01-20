@@ -10,11 +10,10 @@
 
 class Bilet {
 public:
-
 	/*
 	 * Konstrulktor
 	 */
-	Bilet();
+	Bilet(int price, int czas, int numer);
 	/*
 	 * Destruktor
 	 */
@@ -23,6 +22,20 @@ public:
 	 * Metoda abstrakcyjna wypisująca dane informacje o podróży.
 	 */
 	virtual void wypisz()=0;
+
+protected:
+	/*
+	 * Cena biletu
+	 */
+	int price;
+	/*
+	 * Czas podrózy
+	 */
+	int czasPodrozy;
+
+	int numer;
+
+
 };
 
 #endif /* BILET_H_ */

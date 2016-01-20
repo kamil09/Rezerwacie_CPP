@@ -1,10 +1,12 @@
 src/Main_Rezerw.o: ../src/Main_Rezerw.cpp ../src/Baza.cpp ../src/Bilet.h \
- ../src/Rezerwacja.h ../src/PodMorska.h
+ ../src/BiletStat.h ../src/BiletSamo.h ../src/Rezerwacja.h
 
 ../src/Baza.cpp:
 
 ../src/Bilet.h:
 
-../src/Rezerwacja.h:
+../src/BiletStat.h:
 
-../src/PodMorska.h:
+../src/BiletSamo.h:
+
+../src/Rezerwacja.h:

@@ -8,6 +8,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <string>
+#include "Bilet.h"
 
 #ifndef REZERWACJA_H_
 #define REZERWACJA_H_
@@ -15,13 +16,13 @@
 class Rezerwacja {
 public:
 	//ID rezerwacji
-	int id;
+	int id=0;
 	//Data rezerwacji
 	std::string dataRezerwacji;
 	//Podróż:
-
+	Bilet *bilet;
 	//Konstruktor
-	Rezerwacja(int id);
+	Rezerwacja(Bilet *bilet);
 	//Destruktor
 	virtual ~Rezerwacja();
 
