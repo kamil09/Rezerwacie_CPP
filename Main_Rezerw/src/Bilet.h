@@ -22,7 +22,10 @@ public:
 	 * Metoda abstrakcyjna wypisująca dane informacje o podróży.
 	 */
 	virtual void wypisz()=0;
-
+	/*
+	 * ID biletu
+	 */
+	int numer;
 protected:
 	/*
 	 * Cena biletu
@@ -32,10 +35,6 @@ protected:
 	 * Czas podrózy
 	 */
 	int czasPodrozy;
-
-	int numer;
-
-
 };
 
 #endif /* BILET_H_ */
