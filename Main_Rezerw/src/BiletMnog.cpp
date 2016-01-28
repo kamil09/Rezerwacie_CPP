@@ -8,9 +8,12 @@
 #include "BiletMnog.h"
 #include <iostream>
 #include <stdio.h>
+#include <stdlib.h>
+#include "Bilet.h"
 
-BiletMnog::BiletMnog(int price, int time, int numer) :Bilet(price, time, numer) {
+BiletMnog::BiletMnog(int price, int time, int numer, std::vector<Bilet*> lista) :Bilet(price, time, numer) {
 	// TODO Auto-generated constructor stub
+	this->lista=lista;
 }
 
 BiletMnog::~BiletMnog() {
@@ -18,6 +21,10 @@ BiletMnog::~BiletMnog() {
 }
 
 void BiletMnog::wypisz(){
-	puts("Podróż łączona");
+	std::cout << "Typ: Podróż Łączona " << "Numer: " << this->numer << " Cena: " << this->price << " Czas podróży: " << this->czasPodrozy;
+	std::cout << " Numery biletów składowych: ";
+	for(int i=0; i<this->lista.size(); i++){
+		std::cout << this->lista[i]->numer << ", ";
+	}
 }
 

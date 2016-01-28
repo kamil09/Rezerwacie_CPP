@@ -9,15 +9,26 @@
 #include <iostream>
 #include <stdio.h>
 
-BiletSamo::BiletSamo(int price, int time, int numer) :Bilet(price, time, numer){
+BiletSamo::BiletSamo(int price, int time, int numer, std::string A, std::string B) :Bilet(price, time, numer){
 	// TODO Auto-generated constructor stub
-
+	this->miastoA=A;
+	this->miastoB=B;
 }
 
 BiletSamo::~BiletSamo() {
 	// TODO Auto-generated destructor stub
 }
 void BiletSamo::wypisz(){
-	puts("Podróż Morska");
+	std::cout << "Typ: Podróż Powietrzna "
+			  << "Numer: "
+			  << this->numer
+			  << " Cena: "
+			  << this->price
+			  << " Czas podróży: "
+			  << this->czasPodrozy
+			  << " Lotnisko A: "
+			  << this->miastoA
+			  << " Lotnisko B: "
+			  << this->miastoB;
 }
 

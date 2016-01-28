@@ -2,7 +2,7 @@
  * Rezerwacja.cpp
  *
  *  Created on: 13 sty 2016
- *      Author: no-one
+ *      Author: Kamil Piotrowski
  */
 
 #include "Rezerwacja.h"
@@ -49,7 +49,7 @@ std::istream& operator>>(std::istream& is, Rezerwacja& s){
 	is >> s.dataRezerwacji;
 	int numerBiletu;
 	is >> numerBiletu;
-	if(numerBiletu<listaBiletow.size())
+	if(numerBiletu<=listaBiletow.size())
 		s.bilet=listaBiletow[numerBiletu-1];
 	return is;
 }

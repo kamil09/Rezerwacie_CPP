@@ -10,10 +10,11 @@
 #include "Bilet.h"
 #include <cstdio>
 #include <vector>
+#include <iostream>
 
 class BiletMnog : public Bilet{
 public:
-	BiletMnog(int price, int time, int numer);
+	BiletMnog(int price, int time, int numer, std::vector<Bilet*> lista);
 	virtual ~BiletMnog();
 	void wypisz();
 

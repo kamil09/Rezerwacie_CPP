@@ -9,10 +9,16 @@
 #define BILETSAMO_H_
 
 #include "Bilet.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
 
 class BiletSamo : public Bilet{
+private:
+	std::string miastoA;
+	std::string miastoB;
 public:
-	BiletSamo(int price, int time, int numer);
+	BiletSamo(int price, int time, int numer, std::string A, std::string B);
 	virtual ~BiletSamo();
 	/*
 	 * Metoda wypisująca dane informacje o podróży.

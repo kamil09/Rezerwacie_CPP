@@ -9,14 +9,29 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
 
-BiletStat::BiletStat(int price, int time, int numer) :Bilet(price, time,numer ){
-
+BiletStat::BiletStat(int price, int time, int numer,std::string A, std::string B, std::string kap) :Bilet(price, time,numer ){
+	this->port1=A;
+	this->port2=B;
+	this->kapitan=kap;
 }
 
 BiletStat::~BiletStat() {
 }
 void BiletStat::wypisz(){
-	puts("Podróż Morska");
+	std::cout << "Typ: Podróż Morska "
+			  << "Numer: "
+			  << this->numer
+			  << " Cena: "
+			  << this->price
+			  << " Czas podróży: "
+			  << this->czasPodrozy
+			  << " Port A: "
+			  << this->port1
+			  << " Port B: "
+			  << this->port2
+			  << " Kapitan: "
+			  << this->kapitan;
 }
 

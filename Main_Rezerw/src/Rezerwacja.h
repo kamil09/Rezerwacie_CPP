@@ -2,7 +2,7 @@
  * Rezerwacja.h
  *
  *  Created on: 13 sty 2016
- *      Author: no-one
+ *      Author: Kamil Piotrowski
  */
 #include <ctime>
 #include <iostream>

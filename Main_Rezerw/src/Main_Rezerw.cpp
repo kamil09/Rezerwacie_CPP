@@ -10,8 +10,11 @@
 #include <stdio.h>
 #include <string>
 #include <time.h>
+#include <string.h>
 #include <stdlib.h>
+#include <sstream>
 #include "Baza.cpp"
+#include <cstdlib>
 #include "Bilet.h"
 #include "BiletStat.h"
 #include "BiletSamo.h"
@@ -22,19 +25,8 @@
 using namespace std;
 
 vector <Bilet*> listaBiletow;
-
-vector <Bilet*> generujBilety(vector <Bilet*> listaBiletow){
-	for(int i=1; i<=30; i++){
-		if(i<=10) listaBiletow.push_back(new BiletSamo(rand()%100 + 30, rand()%1000+ 1000,i));
-		else if(i<=20) listaBiletow.push_back(new BiletStat(rand()%150+ 50,rand()%2000+ 1000,i));
-		else listaBiletow.push_back(new BiletMnog(rand()%200+ 80,rand()%3000+ 1000,i));
-	}
-	return listaBiletow;
-}
-void wypiszBilety(vector <Bilet*> listaBiletow){
-	for(unsigned int i=0; i < listaBiletow.size() ; i++ )
-		listaBiletow[i]->wypisz();
-}
+vector <Bilet*> generujBilety(vector <Bilet*> listaBiletow);
+void wypiszBilety(vector <Bilet*> listaBiletow);
 
 int main() {
 	listaBiletow=generujBilety(listaBiletow);
@@ -44,8 +36,6 @@ int main() {
 
 	cout << "Witaj w biurze podróży 'Pod Mostem' ";
 	cout << "Jest nam niezmiernie miło, że zdecydowałeś się wybrać naszą ofertę";
-
-
 
 	/*
 	 * Główna pętla programu
@@ -70,7 +60,7 @@ int main() {
 			scanf("%s",idBiletuStr);
 			idBiletu=atoi(idBiletuStr);
 			if(idBiletu<=30 && idBiletu!=0){
-				Rezerwacja *rez = new Rezerwacja(listaBiletow[idBiletu]);
+				Rezerwacja *rez = new Rezerwacja(listaBiletow[idBiletu-1]);
 				(*baza)+= rez;
 			}
 			else cout << "Podano nieprawidłowy numer biletu !\n";
@@ -92,4 +82,27 @@ int main() {
 	}
 	cout << "Dziękujemy za skorzystanie z naszych usług.\n";
 	return 0;
+}
+
+vector <Bilet*> generujBilety(vector <Bilet*> listaBiletow){
+	string miasta[20]={"Poznań","Bydgoszcz","Kraków","Warszawa","Piła","Gniezno","Toruń","Ciechocinek","Tablica",
+					   "Aleksandrów","Łódź","Zakopane","Sopot","Gdynia","Nieszawa","Gniezno","Wrocław","Radom","kalisz","TMON"};
+	string kapitani[5]={"Alojzy","Bogusław","Czarcia broda","Bogumił","Zbyszek"};
+	for(int i=1; i<=30; i++){
+		if(i<=10) listaBiletow.push_back(new BiletSamo(i*20 + 30, i*100 + 1000,i, miasta[i%20],miasta[(i+1)%20]));
+		else if(i<=20) listaBiletow.push_back(new BiletStat(i*15+ 50,i*85 + 1000,i, miasta[i%20], miasta[(i+1)%20],kapitani[i%5]));
+		else {
+			vector <Bilet*> vec;
+			for(int s=0; s<=i%5; s++)
+				vec.push_back(listaBiletow[(i-s)%20]);
+			listaBiletow.push_back(new BiletMnog(i*25 + 80,i*125+ 1000,i,vec));
+		}
+	}
+	return listaBiletow;
+}
+void wypiszBilety(vector <Bilet*> listaBiletow){
+	for(unsigned int i=0; i < listaBiletow.size() ; i++ ){
+		listaBiletow[i]->wypisz();
+		cout << endl;
+	}
 }
